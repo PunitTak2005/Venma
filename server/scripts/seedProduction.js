@@ -192,16 +192,22 @@ async function run() {
 
   // ── 2. Demo users ──────────────────────────────────────────────────────────
   let userCreated = 0;
+  let userPasswordsRepaired = 0;
   const userMap = {};
   for (const u of DEMO_USERS) {
-    let user = await User.findOne({ email: u.email });
+    let user = await User.findOne({ email: u.email }).select('+password');
     if (!user) {
       user = await User.create({ ...u, password: hashed });
       userCreated++;
+    } else if (!user.password || !(await user.matchPassword('password123'))) {
+      // Repair only the documented demo accounts; never alter other users.
+      user.password = hashed;
+      await user.save();
+      userPasswordsRepaired++;
     }
     userMap[u.email] = user;
   }
-  console.log(`✓ Demo users — ${userCreated} created, ${DEMO_USERS.length - userCreated} already existed`);
+  console.log(`✓ Demo users — ${userCreated} created, ${DEMO_USERS.length - userCreated} already existed, ${userPasswordsRepaired} passwords repaired`);
   console.log(`  admin@venma.com  / password123`);
   console.log(`  vendor@venma.com / password123`);
   console.log(`  buyer@venma.com  / password123`);

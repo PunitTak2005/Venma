@@ -71,7 +71,7 @@ export default function Login() {
           <div className="grid grid-cols-3 gap-2">
             <button
               type="button"
-              onClick={() => handleQuickLogin('admin@markethub.com')}
+              onClick={() => handleQuickLogin('admin@venma.com')}
               className="py-1.5 px-2 rounded-[14px] bg-[#F8ECE3] dark:bg-[#2B2B2F] text-[#C67C4E] dark:text-[#D8956A] font-bold text-[11px] border border-[#DDD6CE] dark:border-[#3A3A40] hover:bg-[#EED7C7] transition flex items-center justify-center space-x-1"
             >
               <ShieldAlert className="w-3 h-3" />
@@ -79,7 +79,7 @@ export default function Login() {
             </button>
             <button
               type="button"
-              onClick={() => handleQuickLogin('vendor@markethub.com')}
+              onClick={() => handleQuickLogin('vendor@venma.com')}
               className="py-1.5 px-2 rounded-[14px] bg-emerald-50 dark:bg-emerald-950/60 text-[#10B981] font-bold text-[11px] border border-emerald-200 dark:border-emerald-900/60 hover:bg-emerald-100 transition flex items-center justify-center space-x-1"
             >
               <Store className="w-3 h-3" />
@@ -87,7 +87,7 @@ export default function Login() {
             </button>
             <button
               type="button"
-              onClick={() => handleQuickLogin('customer@markethub.com')}
+              onClick={() => handleQuickLogin('buyer@venma.com')}
               className="py-1.5 px-2 rounded-[14px] bg-orange-50 dark:bg-orange-950/60 text-[#F97316] font-bold text-[11px] border border-orange-200 dark:border-orange-900/60 hover:bg-orange-100 transition flex items-center justify-center space-x-1"
             >
               <User className="w-3 h-3" />

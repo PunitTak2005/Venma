@@ -1,49 +1,62 @@
 import axios from 'axios';
 
-// Development: Vite proxies /api → localhost:9006 (see vite.config.js).
-// Production: VITE_API_URL may be configured as either the Render origin or
-// the complete /api base; normalize both forms to the mounted API prefix.
-const configuredBaseURL = import.meta.env.VITE_API_URL?.trim();
-const apiBaseURL = configuredBaseURL || (import.meta.env.PROD ? 'https://venma.onrender.com/api' : '/api');
-const baseURL = apiBaseURL.replace(/\/+$/, '').endsWith('/api')
-  ? apiBaseURL.replace(/\/+$/, '')
-  : `${apiBaseURL.replace(/\/+$/, '')}/api`;
+/**
+ * API base URL resolution — one clear rule:
+ *
+ * Production (import.meta.env.PROD === true):
+ *   Use VITE_API_URL from Vercel env vars.
+ *   If not set, fall back to the known Render /api endpoint.
+ *   The value must end in /api — never a plain origin.
+ *
+ * Development:
+ *   Use /api which Vite proxies to localhost:9006 (see vite.config.js).
+ */
+function resolveBaseURL() {
+  if (!import.meta.env.PROD) return '/api';
+
+  const configured = (import.meta.env.VITE_API_URL || '').trim().replace(/\/+$/, '');
+  if (configured) {
+    // Accept both "https://venma.onrender.com" and "https://venma.onrender.com/api"
+    return configured.endsWith('/api') ? configured : `${configured}/api`;
+  }
+
+  // Hard fallback — guarantees the site works even with no Vercel env var set
+  return 'https://venma.onrender.com/api';
+}
+
+const baseURL = resolveBaseURL();
 
 const api = axios.create({
   baseURL,
-  withCredentials: true,          // required for CORS with credentials
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  withCredentials: true,
+  headers: { 'Content-Type': 'application/json' },
 });
 
-// Attach JWT token on every request
+// Attach JWT on every request
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('venma_token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   (error) => Promise.reject(error)
 );
 
-// Handle 401 — try to refresh the token once, then redirect to login
+// Auto-refresh JWT on 401
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const originalRequest = error.config;
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+    const original = error.config;
+    if (error.response?.status === 401 && !original._retry) {
+      original._retry = true;
       const refreshToken = localStorage.getItem('venma_refresh_token');
       if (refreshToken) {
         try {
           const res = await axios.post(`${baseURL}/auth/refresh`, { refreshToken });
           if (res.data?.success) {
             localStorage.setItem('venma_token', res.data.accessToken);
-            originalRequest.headers.Authorization = `Bearer ${res.data.accessToken}`;
-            return api(originalRequest);
+            original.headers.Authorization = `Bearer ${res.data.accessToken}`;
+            return api(original);
           }
         } catch {
           localStorage.removeItem('venma_token');

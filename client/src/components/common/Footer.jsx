@@ -237,13 +237,13 @@ export default function Footer() {
             <span className="font-bold text-slate-200">Platform Demonstration Credentials:</span>
             <div className="flex flex-wrap gap-2 text-[11px]">
               <span className="px-2.5 py-1 rounded-lg bg-[#1E1E20] text-[#D4A24C] border border-[#3A3A40]">
-                Admin: admin@markethub.com
+                Admin: admin@venma.com
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-[#1E1E20] text-[#C67C4E] border border-[#3A3A40]">
-                Vendor: vendor@markethub.com
+                Vendor: vendor@venma.com
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-[#1E1E20] text-slate-300 border border-[#3A3A40]">
-                Customer: customer@markethub.com
+                Customer: buyer@venma.com
               </span>
               <span className="px-2.5 py-1 rounded-lg bg-[#1E1E20] text-slate-400 border border-[#3A3A40]">
                 Pass: password123

@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Keep .env.production — it contains only the public Render URL, no secrets
+# .env.production
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
