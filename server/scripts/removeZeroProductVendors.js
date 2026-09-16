@@ -35,7 +35,7 @@ let Wishlist;
 try { Wishlist = require('../models/Wishlist'); } catch (_) { Wishlist = null; }
 
 async function run() {
-  const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub';
+  const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma';
   console.log('\n=== VENMA — Zero-Product Vendor Cleanup ===\n');
   console.log(`Connecting to: ${mongoUri}`);
   await mongoose.connect(mongoUri);

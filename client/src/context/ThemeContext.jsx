@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(() => {
     return (
-      (localStorage.getItem("venma_theme") || localStorage.getItem("markethub_theme")) === "dark" ||
+      localStorage.getItem("venma_theme") === "dark" ||
       (!("venma_theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
     );
   });

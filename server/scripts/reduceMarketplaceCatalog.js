@@ -149,7 +149,7 @@ async function cleanup() {
 }
 
 if (require.main === module) {
-  mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub')
+  mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma')
     .then(cleanup)
     .then((summary) => console.log(JSON.stringify(summary, null, 2)))
     .then(() => mongoose.disconnect())

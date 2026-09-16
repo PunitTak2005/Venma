@@ -290,7 +290,7 @@ const electronicsProductsData = [
 ];
 
 async function syncElectronics() {
-  await mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   console.log('Connected to MongoDB');
 
   const electronicsCat = await Category.findOne({ slug: 'electronics' });

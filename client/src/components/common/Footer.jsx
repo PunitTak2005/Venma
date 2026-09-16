@@ -206,7 +206,7 @@ export default function Footer() {
               <li><Link to="/contact" className="hover:text-[#C67C4E] transition-colors duration-200 font-medium text-[#C67C4E]">Contact Us & Support</Link></li>
               <li className="flex items-start gap-2">
                 <Mail className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
-                <a href="mailto:support@markethub.com" className="hover:text-[#C67C4E] transition-colors duration-200">support@markethub.com</a>
+                <a href="mailto:support@venma.com" className="hover:text-[#C67C4E] transition-colors duration-200">support@venma.com</a>
               </li>
               <li className="flex items-start gap-2">
                 <Phone className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
@@ -231,24 +231,54 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Demo Accounts Quick Pill */}
-        <div className="mt-10 p-4 rounded-2xl bg-[#121212] border border-[#3A3A40] text-xs">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <span className="font-bold text-slate-200">Platform Demonstration Credentials:</span>
-            <div className="flex flex-wrap gap-2 text-[11px]">
-              <span className="px-2.5 py-1 rounded-lg bg-[#1E1E20] text-[#D4A24C] border border-[#3A3A40]">
-                Admin: admin@venma.com
+        {/* Demo credentials */}
+        <div className="mt-10 p-4 sm:p-5 rounded-2xl bg-[#18181B] border border-[#2D2D32] text-xs space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <span className="font-bold text-slate-200 tracking-wide text-xs">
+              Platform Demonstration Credentials
+            </span>
+            <span className="text-[11px] text-slate-400">
+              One-click sign in available on login page
+            </span>
+          </div>
+
+          <div className="grid gap-2.5 sm:grid-cols-3">
+            <Link
+              to="/login"
+              className="px-3 py-2.5 rounded-xl bg-[#222226] hover:bg-[#2A2A30] text-[#D8956A] border border-[#3A3A40] hover:border-[#C67C4E]/60 transition-all flex flex-col group"
+            >
+              <span className="text-xs font-bold text-slate-200 group-hover:text-white transition-colors">
+                Administrator
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#1E1E20] text-[#C67C4E] border border-[#3A3A40]">
-                Vendor: vendor@venma.com
+              <span className="text-[11px] text-slate-400 font-mono">admin@venma.com</span>
+            </Link>
+
+            <Link
+              to="/login"
+              className="px-3 py-2.5 rounded-xl bg-[#222226] hover:bg-[#2A2A30] text-[#10B981] border border-[#3A3A40] hover:border-[#10B981]/60 transition-all flex flex-col group"
+            >
+              <span className="text-xs font-bold text-slate-200 group-hover:text-white transition-colors">
+                Vendor
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#1E1E20] text-slate-300 border border-[#3A3A40]">
-                Customer: buyer@venma.com
+              <span className="text-[11px] text-slate-400 font-mono">vendor@venma.com</span>
+            </Link>
+
+            <Link
+              to="/login"
+              className="px-3 py-2.5 rounded-xl bg-[#222226] hover:bg-[#2A2A30] text-[#F97316] border border-[#3A3A40] hover:border-[#F97316]/60 transition-all flex flex-col group"
+            >
+              <span className="text-xs font-bold text-slate-200 group-hover:text-white transition-colors">
+                Buyer
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#1E1E20] text-slate-400 border border-[#3A3A40]">
-                Pass: password123
-              </span>
-            </div>
+              <span className="text-[11px] text-slate-400 font-mono">buyer@venma.com</span>
+            </Link>
+          </div>
+
+          <div className="pt-2 border-t border-[#2D2D32] flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-slate-400 gap-1">
+            <span>
+              Shared Demo Password: <strong className="text-slate-200 font-mono">password123</strong>
+            </span>
+            <span className="text-slate-500">Works for all three demo accounts.</span>
           </div>
         </div>
       </div>

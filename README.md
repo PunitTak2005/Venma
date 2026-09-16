@@ -19,20 +19,22 @@
 * **Registered Office**: 184 B Block, Sector 14, Hiran Magri, Udaipur, Rajasthan, India
 * **Legal Entity**: VENMA Multi-Vendor Marketplace Inc.
 * **Helpline**: +91 6367088841
-* **Support Email**: support@markethub.com
+* **Support Email**: support@venma.com
 * **Business Hours**: Monday – Saturday (9:00 AM – 7:00 PM IST)
 
 ---
 
-## 🔑 Quick Demo Access
-
+## 🔑 Platform Demonstration Credentials
+ 
 | Role | Email | Password | Access Area |
 | :--- | :--- | :--- | :--- |
-| **Admin** | `admin@markethub.com` | `password123` | Master Console (`/admin/dashboard`) |
-| **Vendor** | `vendor@markethub.com` | `password123` | Merchant Portal (`/vendor/dashboard`) |
-| **Customer**| `customer@markethub.com` | `password123` | Storefront & Checkout (`/`) |
+| **Administrator** | `admin@venma.com` | `password123` | Master Console (`/admin/dashboard`) |
+| **Vendor** | `vendor@venma.com` | `password123` | Merchant Portal (`/vendor/dashboard`) |
+| **Buyer** | `buyer@venma.com` | `password123` | Storefront & Checkout (`/`) |
 
-*Note: The login page includes 1-click quick-login buttons for all 3 roles.*
+**Shared Demo Password:** `password123` *(Works for all three demo accounts)*
+
+*Note: The VENMA login page includes interactive 1-click quick-login buttons for all 3 demo roles.*
 
 ---
 

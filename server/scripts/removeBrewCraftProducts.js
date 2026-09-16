@@ -33,7 +33,7 @@ const TARGET_SLUGS = [
 const TARGET_SKUS = ['BC-GRND-BUR-03', 'BC-POUR-DRP-02', 'BC-COF-ARA-01'];
 
 async function run() {
-  const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub';
+  const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma';
   console.log(`\n=== VENMA — BrewCraft Product Removal Script ===\n`);
   console.log(`Connecting to MongoDB: ${mongoUri}`);
   await mongoose.connect(mongoUri);

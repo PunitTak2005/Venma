@@ -126,7 +126,7 @@ const vendorSeeds = [
   {
     storeName: 'TechNova Electronics',
     storeSlug: 'technova-electronics',
-    email: 'technova@markethub.com',
+    email: 'technova@venma.com',
     desc: 'Sells electronics, computer accessories, gadgets, smart devices, charging accessories, audio products, keyboards, mice, monitors, webcams, USB hubs, and desk tech.',
     specialty: 'Electronics & Smart Tech',
     logo: '/generated-vendors/technova-electronics-logo.webp',
@@ -146,7 +146,7 @@ const vendorSeeds = [
   {
     storeName: 'FitMotion Sports',
     storeSlug: 'fitmotion-sports',
-    email: 'fitmotion@markethub.com',
+    email: 'fitmotion@venma.com',
     desc: 'Sells fitness equipment, yoga accessories, sports gear, gym products, and outdoor fitness items.',
     specialty: 'Fitness Equipment & Gym Gear',
     logo: '/generated-vendors/fitmotion-sports-logo.webp',
@@ -167,7 +167,7 @@ const vendorSeeds = [
   {
     storeName: 'GlowLeaf Skincare',
     storeSlug: 'glowleaf-skincare',
-    email: 'glowleaf@markethub.com',
+    email: 'glowleaf@venma.com',
     desc: 'Pure organic botanical skincare, revitalizing serums, herbal wellness products, and cruelty-free cosmetics.',
     specialty: 'Botanical Skincare & Wellness',
     logo: '/generated-vendors/greenleaf-lifestyle-logo.webp',
@@ -188,7 +188,7 @@ const vendorSeeds = [
   {
     storeName: 'ChronoLux',
     storeSlug: 'chronolux',
-    email: 'chronolux@markethub.com',
+    email: 'chronolux@venma.com',
     desc: 'High-precision chronographs, handcrafted luxury timepieces, designer leather straps, and horology accessories.',
     specialty: 'Luxury Watches & Horology',
     logo: '/generated-vendors/luxewear-logo.webp',
@@ -208,7 +208,7 @@ const vendorSeeds = [
   {
     storeName: 'AutoShine Garage',
     storeSlug: 'autoshine-garage',
-    email: 'autoshine@markethub.com',
+    email: 'autoshine@venma.com',
     desc: 'AutoShine Garage specializes in premium automotive care products, detailing essentials, cleaning solutions, ceramic coatings, and vehicle maintenance accessories.',
     specialty: 'Premium Car Care & Auto Accessories',
     logo: '/generated-vendors/autoshine-garage-logo.webp',
@@ -229,7 +229,7 @@ const vendorSeeds = [
   {
     storeName: 'Occasion Events',
     storeSlug: 'occasion-events',
-    email: 'occasionevents@markethub.com',
+    email: 'occasionevents@venma.com',
     desc: 'Curated luxury celebrations, heritage decor, royal wedding themes, bespoke invitations, and gifting solutions.',
     specialty: 'Royal Event Decor & Gifting',
     logo: '/generated-vendors/technova-electronics-logo.webp',
@@ -249,7 +249,7 @@ const vendorSeeds = [
   {
     storeName: 'Qezmora Education',
     storeSlug: 'qezmora-education',
-    email: 'qezmora@markethub.com',
+    email: 'qezmora@venma.com',
     desc: 'Educational STEM kits, robotics modules, student laboratory gear, stationery, and creative learning supplies.',
     specialty: 'Education & STEM Learning Kits',
     logo: '/generated-vendors/technova-electronics-logo.webp',
@@ -269,7 +269,7 @@ const vendorSeeds = [
   {
     storeName: 'Urban Living Co.',
     storeSlug: 'urban-living-co',
-    email: 'urbanliving@markethub.com',
+    email: 'urbanliving@venma.com',
     desc: 'Sells home décor, furniture, storage, lighting, organizers, mirrors, wall décor, and living room accessories.',
     specialty: 'Home Décor & Living Room Essentials',
     logo: '/generated-vendors/urban-living-co-logo.webp',
@@ -289,7 +289,7 @@ const vendorSeeds = [
   {
     storeName: 'Oak & Steel Workspace',
     storeSlug: 'oak-steel-workspace',
-    email: 'oaksteel@markethub.com',
+    email: 'oaksteel@venma.com',
     desc: 'Sells office furniture, ergonomic chairs, desks, desk organizers, monitor stands, workspace accessories, and productivity furniture.',
     specialty: 'Office Furniture & Productivity Workspace',
     logo: '/generated-vendors/oak-steel-workspace-logo.webp',
@@ -309,7 +309,7 @@ const vendorSeeds = [
   {
     storeName: 'KitchenCraft Essentials',
     storeSlug: 'kitchencraft-essentials',
-    email: 'kitchencraft@markethub.com',
+    email: 'kitchencraft@venma.com',
     desc: 'Sells kitchen appliances, cookware, dining products, coffee accessories, and food preparation tools.',
     specialty: 'Kitchen Appliances & Cookware',
     logo: '/generated-vendors/kitchencraft-essentials-logo.webp',
@@ -329,7 +329,7 @@ const vendorSeeds = [
   {
     storeName: 'LuxeWear',
     storeSlug: 'luxewear',
-    email: 'luxewear@markethub.com',
+    email: 'luxewear@venma.com',
     desc: 'Sells clothing, shoes, bags, wallets, watches, and fashion accessories.',
     specialty: 'Apparel, Bags, Watches & Fashion',
     logo: '/generated-vendors/luxewear-logo.webp',
@@ -349,7 +349,7 @@ const vendorSeeds = [
   {
     storeName: 'GreenLeaf Lifestyle',
     storeSlug: 'greenleaf-lifestyle',
-    email: 'greenleaf@markethub.com',
+    email: 'greenleaf@venma.com',
     desc: 'Sells eco-friendly products, sustainable home items, bamboo products, reusable products, and wellness accessories.',
     specialty: 'Eco-Friendly & Sustainable Living',
     logo: '/generated-vendors/greenleaf-lifestyle-logo.webp',
@@ -408,7 +408,7 @@ const productNouns = ['Headphones', 'Chronograph Watch', 'Desk Lamp', 'Sneakers'
 async function seed() {
   try {
     console.log('[Seed] Connecting to MongoDB...');
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub');
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma');
     console.log('[Seed] Connected! Clearing existing data...');
 
     await Promise.all([
@@ -422,43 +422,80 @@ async function seed() {
       Wishlist.deleteMany({}),
     ]);
 
-    // 1. Create Admin User
-    console.log('[Seed] Creating Admin & Customers...');
+    // 1. Create or verify Admin User
+    console.log('[Seed] Ensuring Admin & Customers with VENMA credentials...');
     const hashedPassword = await bcrypt.hash('password123', 10);
 
-    const admin = await User.create({
-      name: 'Super Admin',
-      email: 'admin@venma.com',
-      password: hashedPassword,
-      role: 'admin',
-      address: {
-        street: '184 B Block, Sector 14, Hiran Magri',
-        city: 'Udaipur',
-        state: 'Rajasthan',
-        zipCode: '313002',
-        country: 'India',
-      },
-    });
-
-    // 2. Create 100 Customers
-    const customerDocs = [];
-    for (let i = 1; i <= 100; i++) {
-      customerDocs.push({
-        name: `Customer ${i}`,
-        email: i === 1 ? 'buyer@venma.com' : `customer${i}@example.com`,
-        password: hashedPassword,
-        role: 'customer',
-        phone: `+91 98${String(10000000 + i).slice(0, 8)}`,
+    const adminEmail = 'admin@venma.com'.toLowerCase().trim();
+    let admin = await User.findOne({ email: adminEmail }).select('+password');
+    if (!admin) {
+      admin = await User.create({
+        name: 'Super Admin',
+        email: adminEmail,
+        password: 'password123',
+        role: 'admin',
         address: {
-          street: `${100 + i} M.G. Road`,
-          city: i % 3 === 0 ? 'Bengaluru' : i % 3 === 1 ? 'Mumbai' : 'Delhi',
-          state: i % 3 === 0 ? 'Karnataka' : i % 3 === 1 ? 'Maharashtra' : 'Delhi',
-          zipCode: `${560001 + (i % 50)}`,
+          street: '184 B Block, Sector 14, Hiran Magri',
+          city: 'Udaipur',
+          state: 'Rajasthan',
+          zipCode: '313002',
           country: 'India',
         },
       });
+    } else {
+      admin.role = 'admin';
+      admin.password = 'password123';
+      await admin.save();
     }
-    const createdCustomers = await User.insertMany(customerDocs);
+
+    // 2. Create Customers (with buyer@venma.com as primary demo customer)
+    const buyerEmail = 'buyer@venma.com'.toLowerCase().trim();
+    let demoBuyer = await User.findOne({ email: buyerEmail }).select('+password');
+    if (!demoBuyer) {
+      demoBuyer = await User.create({
+        name: 'Demo Buyer',
+        email: buyerEmail,
+        password: 'password123',
+        role: 'customer',
+        phone: '+91 9812345678',
+        address: {
+          street: '12 MG Road',
+          city: 'Bengaluru',
+          state: 'Karnataka',
+          zipCode: '560001',
+          country: 'India',
+        },
+      });
+    } else {
+      demoBuyer.password = 'password123';
+      demoBuyer.role = 'customer';
+      await demoBuyer.save();
+    }
+
+    const customerDocs = [];
+    for (let i = 2; i <= 100; i++) {
+      const email = `customer${i}@example.com`.toLowerCase().trim();
+      const exists = await User.exists({ email });
+      if (!exists) {
+        customerDocs.push({
+          name: `Customer ${i}`,
+          email,
+          password: hashedPassword,
+          role: 'customer',
+          phone: `+91 98${String(10000000 + i).slice(0, 8)}`,
+          address: {
+            street: `${100 + i} M.G. Road`,
+            city: i % 3 === 0 ? 'Bengaluru' : i % 3 === 1 ? 'Mumbai' : 'Delhi',
+            state: i % 3 === 0 ? 'Karnataka' : i % 3 === 1 ? 'Maharashtra' : 'Delhi',
+            zipCode: `${560001 + (i % 50)}`,
+            country: 'India',
+          },
+        });
+      }
+    }
+    if (customerDocs.length > 0) {
+      await User.insertMany(customerDocs);
+    }
 
     // 3. Create Genuine Marketplace Vendors
     console.log('[Seed] Creating Genuine Marketplace Vendors with Indian Cities...');
@@ -467,13 +504,21 @@ async function seed() {
 
     for (let i = 0; i < vendorSeeds.length; i++) {
       const vData = vendorSeeds[i];
-      const vendorUser = await User.create({
-        name: `${vData.storeName} Owner`,
-        email: i === 0 ? 'vendor@venma.com' : vData.email,
-        password: hashedPassword,
-        role: 'vendor',
-        address: vData.address,
-      });
+      const vendorEmail = (i === 0 ? 'vendor@venma.com' : vData.email).toLowerCase().trim();
+      let vendorUser = await User.findOne({ email: vendorEmail }).select('+password');
+      if (!vendorUser) {
+        vendorUser = await User.create({
+          name: `${vData.storeName} Owner`,
+          email: vendorEmail,
+          password: 'password123',
+          role: 'vendor',
+          address: vData.address,
+        });
+      } else {
+        vendorUser.role = 'vendor';
+        vendorUser.password = 'password123';
+        await vendorUser.save();
+      }
 
       const vendor = await Vendor.create({
         user: vendorUser._id,
@@ -916,7 +961,7 @@ async function seed() {
             'https://maps.google.com/maps?q=184+B+Block,+Sector+14,+Hiran+Magri,+Udaipur,+Rajasthan,+India&t=&z=15&ie=UTF8&iwloc=&output=embed',
         },
         contact: {
-          supportEmail: 'support@markethub.com',
+          supportEmail: 'support@venma.com',
           helpline: '+91 6367088841',
           businessHours: 'Mon - Sat (9:00 AM - 7:00 PM IST)',
         },

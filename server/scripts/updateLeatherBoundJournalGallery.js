@@ -5,7 +5,7 @@ require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const Product = require('../models/Product');
 
 async function updateJournalGallery() {
-  await mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   console.log('Connected to MongoDB');
 
   const journal = await Product.findOne({ name: 'Leather Bound Journal' });

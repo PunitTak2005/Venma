@@ -40,7 +40,7 @@ async function run() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     },
-    { email: 'customer@markethub.com', password: 'password123' }
+    { email: 'buyer@venma.com', password: 'password123' }
   );
 
   const token = loginRes.data.data?.accessToken;

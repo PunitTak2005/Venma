@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 async function run() {
-  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   const Product = mongoose.model('Product', new mongoose.Schema({}, { strict: false }));
 
   const products = await Product.find({ subcategory: 'Charging' }).sort({ _id: 1 }).lean();

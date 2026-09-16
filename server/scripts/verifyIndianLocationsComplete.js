@@ -22,7 +22,7 @@ async function verifyAll() {
 
   // 1. Check MongoDB directly
   console.log('[1/4] Checking MongoDB Database Records...');
-  await mongoose.connect('mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect('mongodb://127.0.0.1:27017/venma');
   const Vendor = require('../models/Vendor');
   const Product = require('../models/Product');
 

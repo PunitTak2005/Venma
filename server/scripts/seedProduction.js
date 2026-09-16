@@ -17,7 +17,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
-const bcrypt = require('bcryptjs');
 
 dotenv.config({ path: path.join(__dirname, '../.env') });
 
@@ -81,7 +80,7 @@ const VENDORS = [
   {
     storeName:  'FitMotion Sports',
     storeSlug:  'fitmotion-sports',
-    email:      'fitmotion@markethub.com',
+    email:      'fitmotion@venma.com',
     specialty:  'Fitness Equipment & Gym Gear',
     logo:       '/generated-vendors/fitmotion-sports-logo.webp',
     banner:     '/generated-vendors/fitmotion-sports-banner.webp',
@@ -93,7 +92,7 @@ const VENDORS = [
   {
     storeName:  'AutoShine Garage',
     storeSlug:  'autoshine-garage',
-    email:      'autoshine@markethub.com',
+    email:      'autoshine@venma.com',
     specialty:  'Premium Car Care & Auto Accessories',
     logo:       '/generated-vendors/autoshine-garage-logo.webp',
     banner:     '/generated-vendors/autoshine-garage-banner.webp',
@@ -105,7 +104,7 @@ const VENDORS = [
   {
     storeName:  'KitchenCraft Essentials',
     storeSlug:  'kitchencraft-essentials',
-    email:      'kitchencraft@markethub.com',
+    email:      'kitchencraft@venma.com',
     specialty:  'Kitchen Appliances & Cookware',
     logo:       '/generated-vendors/kitchencraft-essentials-logo.webp',
     banner:     '/generated-vendors/kitchencraft-essentials-banner.webp',
@@ -117,7 +116,7 @@ const VENDORS = [
   {
     storeName:  'LuxeWear',
     storeSlug:  'luxewear',
-    email:      'luxewear@markethub.com',
+    email:      'luxewear@venma.com',
     specialty:  'Apparel, Bags, Watches & Fashion',
     logo:       '/generated-vendors/luxewear-logo.webp',
     banner:     '/generated-vendors/luxewear-banner.webp',
@@ -129,7 +128,7 @@ const VENDORS = [
   {
     storeName:  'Oak & Steel Workspace',
     storeSlug:  'oak-steel-workspace',
-    email:      'oaksteel@markethub.com',
+    email:      'oaksteel@venma.com',
     specialty:  'Office Furniture & Productivity Workspace',
     logo:       '/generated-vendors/oak-steel-workspace-logo.webp',
     banner:     '/generated-vendors/oak-steel-workspace-banner.webp',
@@ -141,7 +140,7 @@ const VENDORS = [
   {
     storeName:  'HomeCraft Artisan Studio',
     storeSlug:  'homecraft-artisan-studio',
-    email:      'homecraft@markethub.com',
+    email:      'homecraft@venma.com',
     specialty:  'Artisan Home Decor & Lighting',
     logo:       '/generated-vendors/homecraft-artisan-studio-logo.webp',
     banner:     '/generated-vendors/homecraft-artisan-studio-banner.webp',
@@ -153,7 +152,7 @@ const VENDORS = [
   {
     storeName:  'Apex Gaming Hardware',
     storeSlug:  'apex-gaming-hardware',
-    email:      'apexgaming@markethub.com',
+    email:      'apexgaming@venma.com',
     specialty:  'Gaming Peripherals & PC Hardware',
     logo:       '/generated-vendors/apex-gaming-hardware-logo.webp',
     banner:     '/generated-vendors/apex-gaming-hardware-banner.webp',
@@ -177,7 +176,7 @@ async function run() {
   await mongoose.connect(mongoUri);
   console.log('Connected.\n');
 
-  const hashed = await bcrypt.hash('password123', 10);
+  const demoPassword = 'password123';
 
   // ── 1. Categories ──────────────────────────────────────────────────────────
   let catCreated = 0;
@@ -197,11 +196,11 @@ async function run() {
   for (const u of DEMO_USERS) {
     let user = await User.findOne({ email: u.email }).select('+password');
     if (!user) {
-      user = await User.create({ ...u, password: hashed });
+      user = await User.create({ ...u, password: demoPassword });
       userCreated++;
-    } else if (!user.password || !(await user.matchPassword('password123'))) {
+    } else if (!user.password || !(await user.matchPassword(demoPassword))) {
       // Repair only the documented demo accounts; never alter other users.
-      user.password = hashed;
+      user.password = demoPassword;
       await user.save();
       userPasswordsRepaired++;
     }
@@ -224,7 +223,7 @@ async function run() {
       ownerUser = await User.create({
         name: `${v.storeName} Owner`,
         email: v.email,
-        password: hashed,
+        password: demoPassword,
         role: 'vendor',
         address: {
           street: v.street,

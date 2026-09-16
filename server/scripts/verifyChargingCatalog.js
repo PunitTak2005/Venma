@@ -40,7 +40,7 @@ async function verify() {
   }
 
   console.log('\n=== Checking MongoDB Charging Products ===');
-  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   const Product = mongoose.model('Product', new mongoose.Schema({}, { strict: false }));
 
   const prods = await Product.find({ subcategory: 'Charging' }).sort({ _id: 1 }).lean();

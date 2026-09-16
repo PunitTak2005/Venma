@@ -18,7 +18,7 @@ const uniqueChargingImages = [
 ];
 
 async function updateChargingProducts() {
-  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   const Product = mongoose.model('Product', new mongoose.Schema({}, { strict: false }));
 
   const chargingProducts = await Product.find({ subcategory: 'Charging' }).sort({ _id: 1 });

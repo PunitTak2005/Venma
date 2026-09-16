@@ -4,7 +4,7 @@ const PlatformSettings = require('../models/PlatformSettings');
 
 const seedSettings = async () => {
   try {
-    const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub';
+    const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma';
     await mongoose.connect(mongoUri);
     console.log('Connected to MongoDB for Platform Settings initialization...');
 
@@ -24,7 +24,7 @@ const seedSettings = async () => {
           'https://maps.google.com/maps?q=184+B+Block,+Sector+14,+Hiran+Magri,+Udaipur,+Rajasthan,+India&t=&z=15&ie=UTF8&iwloc=&output=embed',
       },
       contact: {
-        supportEmail: 'support@markethub.com',
+        supportEmail: 'support@venma.com',
         helpline: '+91 6367088841',
         businessHours: 'Mon - Sat (9:00 AM - 7:00 PM IST)',
       },

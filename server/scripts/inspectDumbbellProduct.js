@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 async function run() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect('mongodb://127.0.0.1:27017/venma');
   const Product = mongoose.model('Product', new mongoose.Schema({}, { strict: false }));
   const Vendor = mongoose.model('Vendor', new mongoose.Schema({}, { strict: false }));
 

@@ -10,6 +10,13 @@ const { errorHandler } = require('./middleware/errorMiddleware');
 
 dotenv.config();
 
+if (
+  process.env.NODE_ENV === 'production' &&
+  (!process.env.JWT_SECRET || !process.env.JWT_REFRESH_SECRET)
+) {
+  throw new Error('JWT_SECRET and JWT_REFRESH_SECRET must be configured in production');
+}
+
 // Connect to MongoDB
 connectDB();
 

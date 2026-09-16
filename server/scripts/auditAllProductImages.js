@@ -4,7 +4,7 @@ const path = require('path');
 require('dotenv').config();
 
 async function audit() {
-  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   const collection = mongoose.connection.collection('products');
 
   const products = await collection.find({}).toArray();

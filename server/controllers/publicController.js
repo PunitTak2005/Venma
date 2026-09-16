@@ -31,7 +31,7 @@ exports.getPlatformSettings = async (req, res, next) => {
             'https://maps.google.com/maps?q=184+B+Block,+Sector+14,+Hiran+Magri,+Udaipur,+Rajasthan,+India&t=&z=15&ie=UTF8&iwloc=&output=embed',
         },
         contact: {
-          supportEmail: 'support@markethub.com',
+          supportEmail: 'support@venma.com',
           helpline: '+91 6367088841',
           businessHours: 'Mon - Sat (9:00 AM - 7:00 PM IST)',
         },

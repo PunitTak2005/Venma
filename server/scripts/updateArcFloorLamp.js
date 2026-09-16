@@ -34,7 +34,7 @@ copies.forEach(({ src, dest }) => {
 });
 
 async function updateDb() {
-  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   const collection = mongoose.connection.collection('products');
 
   const newImages = [

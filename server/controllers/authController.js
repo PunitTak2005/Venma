@@ -9,8 +9,9 @@ const jwt = require('jsonwebtoken');
 exports.register = async (req, res, next) => {
   try {
     const { name, email, password, role, storeName, storeDescription, phone } = req.body;
+    const normalizedEmail = email?.toLowerCase().trim();
 
-    const userExists = await User.findOne({ email });
+    const userExists = await User.findOne({ email: normalizedEmail });
     if (userExists) {
       return res.status(400).json({ success: false, message: 'Email is already registered' });
     }
@@ -19,7 +20,7 @@ exports.register = async (req, res, next) => {
 
     const user = await User.create({
       name,
-      email,
+      email: normalizedEmail,
       password,
       role: assignedRole,
       phone: phone || '',

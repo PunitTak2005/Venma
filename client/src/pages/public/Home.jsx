@@ -33,6 +33,7 @@ import {
 import api from '../../services/api';
 import ProductCard from '../../components/customer/ProductCard';
 import HeroCarousel from '../../components/common/HeroCarousel';
+import DemoCredentialsCard from '../../components/common/DemoCredentialsCard';
 import StatsCounter from '../../components/common/StatsCounter';
 import VendorShowcaseSection from '../../components/vendor/VendorShowcaseSection';
 
@@ -386,6 +387,11 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* 9.5. Platform Demonstration Credentials */}
+      <section className="container mx-auto px-4">
+        <DemoCredentialsCard title="Platform Demonstration Credentials" />
       </section>
 
       {/* 10. Newsletter */}

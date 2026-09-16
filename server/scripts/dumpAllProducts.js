@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
 
-mongoose.connect('mongodb://127.0.0.1:27017/markethub').then(async () => {
+mongoose.connect('mongodb://127.0.0.1:27017/venma').then(async () => {
   const products = await mongoose.connection.db.collection('products').find({}).sort({ category: 1, name: 1 }).toArray();
   const vendors = await mongoose.connection.db.collection('vendors').find({}).toArray();
   const categories = await mongoose.connection.db.collection('categories').find({}).toArray();

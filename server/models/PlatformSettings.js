@@ -49,7 +49,7 @@ const PlatformSettingsSchema = new mongoose.Schema(
     contact: {
       supportEmail: {
         type: String,
-        default: 'support@markethub.com',
+        default: 'support@venma.com',
       },
       helpline: {
         type: String,

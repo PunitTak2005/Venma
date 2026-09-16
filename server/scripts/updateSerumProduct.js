@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/markethub').then(async () => {
+mongoose.connect('mongodb://127.0.0.1:27017/venma').then(async () => {
   const col = mongoose.connection.db.collection('products');
   const res = await col.updateOne(
     { name: /Precision Serum Essence Series 123/i },

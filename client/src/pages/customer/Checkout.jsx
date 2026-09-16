@@ -455,7 +455,7 @@ export default function Checkout() {
                 • 184 B Block, Sector 14, Hiran Magri, Udaipur, Rajasthan, India
               </p>
               <p className="mt-0.5 text-[10px]">
-                Support Helpline: +91 6367088841 | support@markethub.com
+                Support Helpline: +91 6367088841 | support@venma.com
               </p>
             </div>
           </div>

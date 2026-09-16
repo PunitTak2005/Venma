@@ -21,7 +21,7 @@ const lightingImages = [
 ];
 
 async function updateLighting() {
-  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   const collection = mongoose.connection.collection('products');
 
   // 1. Update Modern Minimalist Arc Floor Lamp

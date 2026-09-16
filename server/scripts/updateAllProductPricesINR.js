@@ -78,7 +78,7 @@ const priceMap = {
 };
 
 async function updatePrices() {
-  await mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   console.log('Connected to MongoDB');
 
   const products = await Product.find({});

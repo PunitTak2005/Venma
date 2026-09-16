@@ -5,7 +5,7 @@ require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const Product = require('../models/Product');
 
 async function updateWaxGallery() {
-  await mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/venma');
   console.log('Connected to MongoDB');
 
   const wax = await Product.findOne({ name: 'Ceramic Car Wax' });

@@ -8,7 +8,7 @@ const connectDB = async () => {
       throw new Error('MONGO_URI or MONGODB_URI must be configured in production');
     }
 
-    const conn = await mongoose.connect(mongoUri || 'mongodb://127.0.0.1:27017/markethub');
+    const conn = await mongoose.connect(mongoUri || 'mongodb://127.0.0.1:27017/venma');
     console.log(`    MongoDB     : Connected (${conn.connection.host})`);
 
     // Clean up any leftover avatar fields from previous versions

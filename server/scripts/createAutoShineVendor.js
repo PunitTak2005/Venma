@@ -7,7 +7,7 @@ const Category = require('../models/Category');
 
 async function run() {
   console.log('Connecting to MongoDB...');
-  await mongoose.connect('mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect('mongodb://127.0.0.1:27017/venma');
 
   // 1. Locate Ceramic Car Wax product
   const waxProduct = await Product.findOne({ slug: 'ceramic-car-wax' });
@@ -20,7 +20,7 @@ async function run() {
   console.log(`Current vendor ID: ${prevVendorId}`);
 
   // 2. Create or find User for AutoShine Garage
-  const vendorEmail = 'autoshine@markethub.com';
+  const vendorEmail = 'autoshine@venma.com';
   let vendorUser = await User.findOne({ email: vendorEmail });
   if (!vendorUser) {
     vendorUser = await User.create({

@@ -514,7 +514,7 @@ async function seedMissingProducts() {
   console.log('=== VENMA AUTO-SEED MISSING VENDOR PRODUCTS ===\n');
 
   try {
-    const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub';
+    const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma';
     console.log(`Connecting to MongoDB (${mongoUri})...`);
     await mongoose.connect(mongoUri);
     console.log('Connected to MongoDB successfully.\n');

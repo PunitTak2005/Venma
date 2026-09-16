@@ -224,7 +224,7 @@ const vendorLocationUpdates = [
 async function updateAll() {
   try {
     console.log('Connecting to MongoDB...');
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub');
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma');
     console.log('Connected! Updating all vendor locations...');
 
     for (const v of vendorLocationUpdates) {
@@ -256,7 +256,7 @@ async function updateAll() {
         // Create vendor and user if missing
         console.log(`Creating vendor: ${v.storeName}...`);
         const hashedPassword = await bcrypt.hash('password123', 10);
-        const email = `${v.storeSlug.replace(/-/g, '')}@markethub.com`;
+        const email = `${v.storeSlug.replace(/-/g, '')}@venma.com`;
         let user = await User.findOne({ email });
         if (!user) {
           user = await User.create({

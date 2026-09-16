@@ -5,7 +5,7 @@ const User = require('../models/User');
 const Category = require('../models/Category');
 
 async function inspect() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect('mongodb://127.0.0.1:27017/venma');
 
   const wax = await Product.findOne({ slug: 'ceramic-car-wax' }).populate('category').populate('vendor');
   console.log('Wax Product Details:');

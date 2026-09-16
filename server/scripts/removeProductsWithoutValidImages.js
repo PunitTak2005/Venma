@@ -7,7 +7,7 @@ const Vendor = require('../models/Vendor');
 const { getValidProductImages } = require('../utils/productImageValidation');
 
 async function cleanup() {
-  await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma');
 
   const products = await Product.find({}).lean();
   const invalidIds = [];

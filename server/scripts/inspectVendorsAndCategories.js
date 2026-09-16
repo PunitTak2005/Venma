@@ -6,7 +6,7 @@ const Product = require('../models/Product');
 
 const inspect = async () => {
   try {
-    const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub';
+    const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma';
     await mongoose.connect(mongoUri);
     console.log('Connected to MongoDB');
 

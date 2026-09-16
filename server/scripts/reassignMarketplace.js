@@ -16,7 +16,7 @@ const genuineVendorsData = [
   {
     storeName: 'TechNova Electronics',
     storeSlug: 'technova-electronics',
-    email: 'technova@markethub.com',
+    email: 'technova@venma.com',
     desc: 'Sells electronics, computer accessories, gadgets, smart devices, charging accessories, audio products, keyboards, mice, monitors, webcams, USB hubs, and desk tech.',
     specialty: 'Electronics & Smart Devices',
     logo: 'https://images.openai.com/static-rsc-4/0vZwJNpmDZLVf-RXPA0v3NCWXBzYrF8Wl56z0zNM21KQkW-gN9mPTOabSjYsicXyWTOi2Okz9l4oNIk865zcwH5ZfoW-ns66w-KbndBl-g0KoE8BUCEOFx6TC19_DaIkjX47PSyENaTpuqaQ4QYUzEIu8lrgISoypjEjPkEx1_w?purpose=inline',
@@ -36,7 +36,7 @@ const genuineVendorsData = [
   {
     storeName: 'Urban Living Co.',
     storeSlug: 'urban-living-co',
-    email: 'urbanliving@markethub.com',
+    email: 'urbanliving@venma.com',
     desc: 'Sells home décor, furniture, storage, lighting, organizers, mirrors, wall décor, and living room accessories.',
     specialty: 'Home Décor & Living Room Essentials',
     logo: 'https://images.openai.com/static-rsc-4/eh5AFfIYVH0nMXJ7BOAwee5L88FHTlLYxtZKr5Y7R_BF8FeGMoLyVAnLezkFAA32kEQZoKrEpLz14v5Uz4w68rfwyy1UpM1zSCJDds2vjVBQM_1y6vr0ylN-VseYcAL9hQyWFC5FklRCj68o3w8Xj4iO77GlzjWzZ8JSHKicV_Y?purpose=inline',
@@ -56,7 +56,7 @@ const genuineVendorsData = [
   {
     storeName: 'Oak & Steel Workspace',
     storeSlug: 'oak-steel-workspace',
-    email: 'oaksteel@markethub.com',
+    email: 'oaksteel@venma.com',
     desc: 'Sells office furniture, ergonomic chairs, desks, desk organizers, monitor stands, workspace accessories, and productivity furniture.',
     specialty: 'Office Furniture & Productivity Workspace',
     logo: 'https://images.openai.com/static-rsc-4/7TXLnrDs3yea-zR6jcTFom6GsfVfdNd3Prn0B1xOLnyw0PQ1BQYSdtfrTn8AwdCmC5-Xx6XL2dJEYVaBNW2LXzIA3RbSr40b9666XI0TAZVFFx-HEd9WnqMGAFzzTLs81CJsPtxv_DAdac0YIc3jaXpoacW-Ywu1tLLxIHmn7Hc?purpose=inline',
@@ -76,7 +76,7 @@ const genuineVendorsData = [
   {
     storeName: 'KitchenCraft Essentials',
     storeSlug: 'kitchencraft-essentials',
-    email: 'kitchencraft@markethub.com',
+    email: 'kitchencraft@venma.com',
     desc: 'Sells kitchen appliances, cookware, dining products, coffee accessories, and food preparation tools.',
     specialty: 'Kitchen Appliances & Cookware',
     logo: 'https://images.openai.com/static-rsc-4/OdnIjp78Sfkmz99VC96JYX8sNnlfJXYKDgL5zbM8vZ4FH4oLZ0xykxtjXS_iE2WgAg1nroatMZcvhawfpH0kkgmpO_jxeRrPg6xZ8OaojbNOpoR0gCG30aU5WfE9P9nmigsXUiwOVEgEX39nUJwAT__V2P6GWnbBlnP2fzem5r0?purpose=inline',
@@ -96,7 +96,7 @@ const genuineVendorsData = [
   {
     storeName: 'LuxeWear',
     storeSlug: 'luxewear',
-    email: 'luxewear@markethub.com',
+    email: 'luxewear@venma.com',
     desc: 'Sells clothing, shoes, bags, wallets, watches, and fashion accessories.',
     specialty: 'Apparel, Bags, Watches & Fashion',
     logo: 'https://images.openai.com/static-rsc-4/hjQzFjV6aqbW5TXi35qWfrNEJ-J4P_HSvcV0f5bVVSKPUF8rVCsdTuYk-A9zYiCiq259fpxsDXTqlTgltClVgY4yayHZKaweYdwoAm3-imMeoy0opwbAa9ApdSW1KnDOJ5S6NDYykADJkKXAIwlW_vBWJSDMpqrOqm1bgp263FE?purpose=inline',
@@ -116,7 +116,7 @@ const genuineVendorsData = [
   {
     storeName: 'FitMotion Sports',
     storeSlug: 'fitmotion-sports',
-    email: 'fitmotion@markethub.com',
+    email: 'fitmotion@venma.com',
     desc: 'Sells fitness equipment, yoga accessories, sports gear, gym products, and outdoor fitness items.',
     specialty: 'Fitness Equipment & Gym Gear',
     logo: 'https://images.openai.com/static-rsc-4/FwhojJmlV5VbnyraqCqRht4MpLvmdKKkw7r-92gGuQihRCIbOyGdPoAKIZezQrO7xs4L75BCWT-fflWAMOOIGpDzNoqshp_BxxtkuCAnALwhUMFulZXSl470oGUtfgxJjqA6xYflt2nQdavPEgG0g1u_YywLdphjhrPhPtyR6vk?purpose=inline',
@@ -136,7 +136,7 @@ const genuineVendorsData = [
   {
     storeName: 'GreenLeaf Lifestyle',
     storeSlug: 'greenleaf-lifestyle',
-    email: 'greenleaf@markethub.com',
+    email: 'greenleaf@venma.com',
     desc: 'Sells eco-friendly products, sustainable home items, bamboo products, reusable products, and wellness accessories.',
     specialty: 'Eco-Friendly & Sustainable Living',
     logo: 'https://images.openai.com/static-rsc-4/5_Fx7j9KE42RzHbD_7fW0Wwy3aRt6-5GrTCar67clwAVWk0_o_iutuRXfV3Oz5BQtZu4jCR5W8K7v7TGyncO1M5awh9bpodRht0qtLVqRaD_W7ECs9DA3IqtI0IbkiO7vrWufPFKF7tg1uTdnDi6FG0e0CO9d2oMUsr6Um5mFWg?purpose=inline',
@@ -316,7 +316,7 @@ function classifyProduct(name) {
 async function run() {
   try {
     console.log('[Migration] Connecting to MongoDB...');
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub');
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/venma');
     console.log('[Migration] Connected.');
 
     const defaultPasswordHash = await bcrypt.hash('password123', 10);
@@ -350,7 +350,7 @@ async function run() {
       let user = await User.findOne({ email: vData.email });
       if (!user && idx === 0) {
         // Also check if primary demo vendor exists
-        user = await User.findOne({ email: 'vendor@markethub.com' });
+        user = await User.findOne({ email: 'vendor@venma.com' });
       }
 
       if (!user) {

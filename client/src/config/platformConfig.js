@@ -21,7 +21,7 @@ export const PLATFORM_CONFIG = {
   },
   contact: {
     helpline: '+91 6367088841',
-    supportEmail: 'support@markethub.com',
+    supportEmail: 'support@venma.com',
     businessHours: 'Mon - Sat (9:00 AM - 7:00 PM IST)',
   },
 };

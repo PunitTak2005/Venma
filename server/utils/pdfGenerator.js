@@ -111,7 +111,7 @@ const generateInvoicePDF = (order, res) => {
     align: 'center',
     width: 515,
   });
-  doc.text('Customer Helpline: +91 6367088841 • support@markethub.com • Authenticated Tax Invoice', 40, doc.page.height - 56, {
+  doc.text('Customer Helpline: +91 6367088841 • support@venma.com • Authenticated Tax Invoice', 40, doc.page.height - 56, {
     align: 'center',
     width: 515,
   });

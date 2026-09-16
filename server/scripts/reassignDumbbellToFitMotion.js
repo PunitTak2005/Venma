@@ -3,7 +3,7 @@ const Product = require('../models/Product');
 const Vendor = require('../models/Vendor');
 
 async function run() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/markethub');
+  await mongoose.connect('mongodb://127.0.0.1:27017/venma');
 
   const fitmotion = await Vendor.findOne({ storeSlug: 'fitmotion-sports' });
   const prevVendor = await Vendor.findOne({ storeSlug: 'urban-living-co' });
