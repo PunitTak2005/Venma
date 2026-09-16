@@ -1,0 +1,15 @@
+{
+  "name": "venma-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "seed": "npm --prefix server run seed",
+    "seed:missing-products": "npm --prefix server run seed:missing-products"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

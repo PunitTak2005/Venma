@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --venma-primary: #1C1C1E;
+  --venma-primary-hover: #2A2A2E;
+  --venma-secondary: #C67C4E;
+  --venma-secondary-hover: #A9653C;
+  --venma-accent: #D4A24C;
+  --venma-bg: #F7F5F2;
+  --venma-card: #FFFFFF;
+  --venma-surface: #EFEAE3;
+  --venma-border: #DDD6CE;
+  --venma-text: #1C1C1E;
+  --venma-muted: #6B6B70;
+  --shadow-card: 0 10px 30px rgba(28, 28, 30, 0.08);
+}
+
+.dark {
+  --venma-bg: #121212;
+  --venma-card: #1E1E20;
+  --venma-surface: #2B2B2F;
+  --venma-border: #3A3A40;
+  --venma-text: #F8F7F5;
+  --venma-muted: #A1A1AA;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-[#F7F5F2] text-[#1C1C1E] antialiased dark:bg-[#121212] dark:text-[#F8F7F5] min-h-screen transition-colors duration-200 overflow-x-hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(247, 245, 242, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass {
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #DDD6CE;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #3A3A40;
+}
+
+/* Touch-friendly interactive targets */
+@media (max-width: 767px) {
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+  }
+}
+
+/* Standardized VENMA button & card utilities - Charcoal + Copper Design System */
+.btn-primary {
+  @apply bg-[#1C1C1E] hover:bg-[#2A2A2E] text-white font-semibold transition-all duration-200 shadow-sm active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-secondary {
+  @apply bg-[#C67C4E] hover:bg-[#A9653C] text-white font-semibold transition-all duration-200 shadow-sm active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-ghost {
+  @apply bg-transparent hover:bg-[#EFEAE3] dark:hover:bg-[#2B2B2F] text-[#1C1C1E] dark:text-[#F8F7F5] border border-[#DDD6CE] dark:border-[#3A3A40] font-semibold transition-all duration-200 active:scale-[0.98];
+}
+
+.card-venma {
+  @apply bg-white dark:bg-[#1E1E20] rounded-[20px] border border-[#DDD6CE]/80 dark:border-[#3A3A40]/80 shadow-[0_10px_30px_rgba(28,28,30,0.08)] hover:shadow-[0_14px_35px_-5px_rgba(198,124,78,0.15)] hover:-translate-y-1 transition-all duration-200;
+}

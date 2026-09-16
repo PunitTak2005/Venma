@@ -1,0 +1,15 @@
+const express = require('express');
+const router = express.Router();
+const {
+  getCategories,
+  createCategory,
+  getFeaturedProductsByCategory,
+} = require('../controllers/categoryController');
+const { protect, authorize } = require('../middleware/authMiddleware');
+
+router.get('/featured-products', getFeaturedProductsByCategory);
+router.get('/', getCategories);
+router.post('/', protect, authorize('admin'), createCategory);
+
+module.exports = router;
+

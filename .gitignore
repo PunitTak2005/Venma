@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment files — never commit secrets
+.env
+.env.local
+.env.production
+.env.development
+**/.env
+**/.env.local
+**/.env.production
+
+# Build output
+dist/
+build/
+.vite/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage / test artifacts
+coverage/
+.nyc_output/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Uploads (local only — use cloud storage in production)
+uploads/*
+!uploads/.gitkeep
+
+# Kiro IDE files
+.kiro/
+
+# Seed output / temp scripts
+server/scripts/temp_vendor_inspect/
