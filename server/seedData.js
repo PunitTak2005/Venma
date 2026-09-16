@@ -112,6 +112,14 @@ const categoriesData = [
     banner: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80',
     featured: true,
   },
+  {
+    name: 'Automotive',
+    slug: 'automotive',
+    icon: 'Car',
+    description: 'Premium car care products, ceramic coatings, detailing essentials, and vehicle maintenance accessories',
+    banner: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80',
+    featured: true,
+  },
 ];
 
 const vendorSeeds = [
@@ -525,6 +533,9 @@ async function seed() {
       const classification = classifyProduct(productName);
       const vendor = vendorMapBySlug[classification.vendorSlug];
       const category = categoryMapBySlug[classification.categorySlug];
+
+      // Skip if vendor or category not found — prevents _id crash
+      if (!vendor || !category) continue;
 
       const inrBaseMap = {
         'electronics': 4999,
