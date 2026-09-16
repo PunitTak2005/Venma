@@ -3,9 +3,12 @@ const User = require('../models/User');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(
-      process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/markethub'
-    );
+    const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
+    if (!mongoUri && process.env.NODE_ENV === 'production') {
+      throw new Error('MONGO_URI or MONGODB_URI must be configured in production');
+    }
+
+    const conn = await mongoose.connect(mongoUri || 'mongodb://127.0.0.1:27017/markethub');
     console.log(`    MongoDB     : Connected (${conn.connection.host})`);
 
     // Clean up any leftover avatar fields from previous versions

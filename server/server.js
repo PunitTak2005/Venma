@@ -21,13 +21,21 @@ app.set('trust proxy', 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigins = [
+  'http://localhost:3257',
+  'http://127.0.0.1:3257',
+  'https://venma.vercel.app',
+  process.env.CLIENT_URL,
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [
-      'http://localhost:3257',
-      'http://127.0.0.1:3257',
-      process.env.CLIENT_URL,
-    ].filter(Boolean),
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin) || /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error('Origin is not allowed by CORS'));
+    },
     credentials: true,
   })
 );

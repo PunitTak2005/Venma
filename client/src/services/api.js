@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 // In development Vite proxies /api → localhost:9006.
-// In production the env var points directly to the Render backend.
-const baseURL = import.meta.env.VITE_API_URL || '/api';
+// Production builds use Render directly, even if Vercel's env var is missing.
+const baseURL =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.PROD ? 'https://venma.onrender.com/api' : '/api');
 
 const api = axios.create({
   baseURL,
