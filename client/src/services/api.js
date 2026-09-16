@@ -1,19 +1,21 @@
 import axios from 'axios';
 
-// In development Vite proxies /api → localhost:9006.
-// Production builds use Render directly, even if Vercel's env var is missing.
+// Development: Vite proxies /api → localhost:9006 (see vite.config.js)
+// Production:  VITE_API_URL env var set in Vercel dashboard
+//              Falls back to the known Render URL if the env var is missing.
 const baseURL =
   import.meta.env.VITE_API_URL ||
   (import.meta.env.PROD ? 'https://venma.onrender.com/api' : '/api');
 
 const api = axios.create({
   baseURL,
+  withCredentials: true,          // required for CORS with credentials
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Request interceptor to attach JWT token
+// Attach JWT token on every request
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('venma_token');
@@ -25,7 +27,7 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response interceptor to handle token refresh if needed
+// Handle 401 — try to refresh the token once, then redirect to login
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -41,7 +43,7 @@ api.interceptors.response.use(
             originalRequest.headers.Authorization = `Bearer ${res.data.accessToken}`;
             return api(originalRequest);
           }
-        } catch (refreshErr) {
+        } catch {
           localStorage.removeItem('venma_token');
           localStorage.removeItem('venma_refresh_token');
           localStorage.removeItem('venma_user');
