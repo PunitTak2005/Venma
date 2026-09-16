@@ -3,17 +3,17 @@ const dotenv = require('dotenv');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
-dotenv.config({ path: path.join(__dirname, '../server/.env') });
+dotenv.config({ path: path.join(__dirname, '.env') });
 
-const User = require('../server/models/User');
-const Vendor = require('../server/models/Vendor');
-const Category = require('../server/models/Category');
-const Product = require('../server/models/Product');
-const Order = require('../server/models/Order');
-const Review = require('../server/models/Review');
-const Coupon = require('../server/models/Coupon');
-const Wishlist = require('../server/models/Wishlist');
-const PlatformSettings = require('../server/models/PlatformSettings');
+const User = require('./models/User');
+const Vendor = require('./models/Vendor');
+const Category = require('./models/Category');
+const Product = require('./models/Product');
+const Order = require('./models/Order');
+const Review = require('./models/Review');
+const Coupon = require('./models/Coupon');
+const Wishlist = require('./models/Wishlist');
+const PlatformSettings = require('./models/PlatformSettings');
 
 const categoriesData = [
   {
@@ -420,15 +420,15 @@ async function seed() {
 
     const admin = await User.create({
       name: 'Super Admin',
-      email: 'admin@markethub.com',
-      password: 'password123',
+      email: 'admin@venma.com',
+      password: hashedPassword,
       role: 'admin',
       address: {
-        street: '100 Silicon Ave, Suite 400',
-        city: 'San Francisco',
-        state: 'CA',
-        zipCode: '94107',
-        country: 'United States',
+        street: '184 B Block, Sector 14, Hiran Magri',
+        city: 'Udaipur',
+        state: 'Rajasthan',
+        zipCode: '313002',
+        country: 'India',
       },
     });
 
@@ -437,7 +437,7 @@ async function seed() {
     for (let i = 1; i <= 100; i++) {
       customerDocs.push({
         name: `Customer ${i}`,
-        email: i === 1 ? 'customer@markethub.com' : `customer${i}@example.com`,
+        email: i === 1 ? 'buyer@venma.com' : `customer${i}@example.com`,
         password: hashedPassword,
         role: 'customer',
         phone: `+91 98${String(10000000 + i).slice(0, 8)}`,
@@ -461,8 +461,8 @@ async function seed() {
       const vData = vendorSeeds[i];
       const vendorUser = await User.create({
         name: `${vData.storeName} Owner`,
-        email: i === 0 ? 'vendor@markethub.com' : vData.email,
-        password: 'password123',
+        email: i === 0 ? 'vendor@venma.com' : vData.email,
+        password: hashedPassword,
         role: 'vendor',
         address: vData.address,
       });
@@ -915,9 +915,9 @@ async function seed() {
 
     console.log('--------------------------------------------------');
     console.log('✨ [SEED COMPLETED SUCCESSFULLY!]');
-    console.log(`- 1 Admin: admin@markethub.com / password123`);
-    console.log(`- 1 Demo Vendor: vendor@markethub.com / password123 (TechNova Electronics)`);
-    console.log(`- 1 Demo Customer: customer@markethub.com / password123`);
+    console.log(`- 1 Admin:       admin@venma.com  / password123`);
+    console.log(`- 1 Demo Vendor: vendor@venma.com / password123 (TechNova Electronics)`);
+    console.log(`- 1 Demo Buyer:  buyer@venma.com  / password123`);
     console.log(`- 7 Genuine Specialized Vendors Seeded`);
     console.log(`- 10 Standard Categories Seeded`);
     console.log(`- 10 Products Seeded with specialized vendors & subcategories`);
