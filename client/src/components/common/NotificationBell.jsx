@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Bell, CheckCircle, Package, AlertTriangle, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Tooltip from './Tooltip';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 
@@ -43,18 +44,20 @@ export default function NotificationBell() {
 
   return (
     <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-        title="Notifications"
-      >
-        <Bell className="w-5 h-5" />
-        {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-pulse">
-            {unreadCount}
-          </span>
-        )}
-      </button>
+      <Tooltip content="Notifications" position="bottom" disabled={isOpen}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          aria-label="Notifications"
+        >
+          <Bell className="w-5 h-5" />
+          {unreadCount > 0 && (
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-pulse">
+              {unreadCount}
+            </span>
+          )}
+        </button>
+      </Tooltip>
 
       {isOpen && (
         <div className="absolute right-0 mt-2 w-80 rounded-3xl bg-white dark:bg-slate-900 shadow-2xl border border-slate-200 dark:border-slate-800 py-3 z-50 animate-in fade-in slide-in-from-top-2">

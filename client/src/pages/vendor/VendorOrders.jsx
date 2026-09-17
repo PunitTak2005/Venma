@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Package, Truck, CheckCircle, Clock, FileText } from 'lucide-react';
 import api from '../../services/api';
 import orderService from '../../services/orderService';
+import Tooltip from '../../components/common/Tooltip';
 
 export default function VendorOrders() {
   const [orders, setOrders] = useState([]);
@@ -94,14 +95,16 @@ export default function VendorOrders() {
                   <option value="cancelled">Cancelled</option>
                 </select>
 
-                <button
-                  type="button"
-                  onClick={() => handleInvoiceDownload(order._id)}
-                  className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:text-[#C67C4E]"
-                  title="Print Invoice"
-                >
-                  <FileText className="w-4 h-4" />
-                </button>
+                <Tooltip content="Download / Print Invoice" position="top">
+                  <button
+                    type="button"
+                    onClick={() => handleInvoiceDownload(order._id)}
+                    className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:text-[#C67C4E] transition"
+                    aria-label="Download / Print Invoice"
+                  >
+                    <FileText className="w-4 h-4" />
+                  </button>
+                </Tooltip>
               </div>
             </div>
 

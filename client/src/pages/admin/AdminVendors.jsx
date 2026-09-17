@@ -23,6 +23,7 @@ import {
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import InitialsBadge from '../../components/common/InitialsBadge';
+import Tooltip from '../../components/common/Tooltip';
 
 export default function AdminVendors() {
   const [vendors, setVendors] = useState([]);
@@ -146,14 +147,16 @@ export default function AdminVendors() {
         </div>
 
         <div className="flex items-center gap-2.5">
-          <button
-            onClick={fetchVendors}
-            className="inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700/80 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-all shadow-sm active:scale-95"
-            title="Refresh vendor list"
-          >
-            <RefreshCw className="w-3.5 h-3.5 mr-1.5 text-slate-500 dark:text-slate-400" />
-            <span>Refresh</span>
-          </button>
+          <Tooltip content="Refresh vendor directory" position="bottom">
+            <button
+              onClick={fetchVendors}
+              className="inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700/80 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-all shadow-sm active:scale-95"
+              aria-label="Refresh vendor directory"
+            >
+              <RefreshCw className="w-3.5 h-3.5 mr-1.5 text-slate-500 dark:text-slate-400" />
+              <span>Refresh</span>
+            </button>
+          </Tooltip>
           <Link
             to="/admin/dashboard"
             className="inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#1C1C1E] dark:bg-slate-800 text-white hover:bg-slate-800 dark:hover:bg-slate-700 border border-transparent dark:border-slate-700 transition-all shadow-sm active:scale-95"
@@ -325,30 +328,32 @@ export default function AdminVendors() {
 
             {/* View Switcher: Table vs Cards */}
             <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200/80 dark:border-slate-700/80">
-              <button
-                onClick={() => setViewMode('table')}
-                className={`p-1.5 rounded-lg text-xs transition-all ${
-                  viewMode === 'table'
-                    ? 'bg-white dark:bg-slate-900 text-[#C67C4E] shadow-sm'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
-                }`}
-                title="Table View"
-                aria-label="Table View"
-              >
-                <TableIcon className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={() => setViewMode('cards')}
-                className={`p-1.5 rounded-lg text-xs transition-all ${
-                  viewMode === 'cards'
-                    ? 'bg-white dark:bg-slate-900 text-[#C67C4E] shadow-sm'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
-                }`}
-                title="Cards View"
-                aria-label="Cards View"
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-              </button>
+              <Tooltip content="Switch to Table View" position="top">
+                <button
+                  onClick={() => setViewMode('table')}
+                  className={`p-1.5 rounded-lg text-xs transition-all ${
+                    viewMode === 'table'
+                      ? 'bg-white dark:bg-slate-900 text-[#C67C4E] shadow-sm'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+                  }`}
+                  aria-label="Table View"
+                >
+                  <TableIcon className="w-3.5 h-3.5" />
+                </button>
+              </Tooltip>
+              <Tooltip content="Switch to Cards View" position="top">
+                <button
+                  onClick={() => setViewMode('cards')}
+                  className={`p-1.5 rounded-lg text-xs transition-all ${
+                    viewMode === 'cards'
+                      ? 'bg-white dark:bg-slate-900 text-[#C67C4E] shadow-sm'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+                  }`}
+                  aria-label="Cards View"
+                >
+                  <LayoutGrid className="w-3.5 h-3.5" />
+                </button>
+              </Tooltip>
             </div>
           </div>
         </div>
@@ -413,15 +418,17 @@ export default function AdminVendors() {
                               <span className="font-bold text-slate-900 dark:text-white block group-hover:text-[#C67C4E] transition-colors">
                                 {v.storeName}
                               </span>
-                              <Link
-                                to={`/vendors/${v.storeSlug || v._id}`}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="text-slate-400 hover:text-[#C67C4E] dark:hover:text-[#C67C4E] p-0.5 rounded transition"
-                                title="View storefront in new tab"
-                              >
-                                <ExternalLink className="w-3 h-3" />
-                              </Link>
+                              <Tooltip content="View public storefront" position="top">
+                                <Link
+                                  to={`/vendors/${v.storeSlug || v._id}`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="text-slate-400 hover:text-[#C67C4E] dark:hover:text-[#C67C4E] p-0.5 rounded transition"
+                                  aria-label="View storefront in new tab"
+                                >
+                                  <ExternalLink className="w-3 h-3" />
+                                </Link>
+                              </Tooltip>
                             </div>
                             <div className="flex items-center space-x-2 text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                               <span className="font-mono text-slate-400 dark:text-slate-500">/{v.storeSlug}</span>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Search, Mic, X, Tag, Store, Package, ChevronRight, MapPin } from 'lucide-react';
 import api from '../../services/api';
 import InitialsBadge from './InitialsBadge';
+import Tooltip from './Tooltip';
 
 export default function SearchAutocomplete({ onClose }) {
   const [query, setQuery] = useState('');
@@ -170,19 +171,20 @@ export default function SearchAutocomplete({ onClose }) {
               </button>
             )}
 
-            <button
-              type="button"
-              onClick={toggleVoice}
-              className={`p-1.5 rounded-full transition mr-2 ${
-                isListening
-                  ? 'bg-red-500 text-white animate-pulse'
-                  : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'
-              }`}
-              title="Voice Search"
-              aria-label="Voice Search"
-            >
-              <Mic className="w-4.5 h-4.5" />
-            </button>
+            <Tooltip content="Voice Search" position="bottom">
+              <button
+                type="button"
+                onClick={toggleVoice}
+                className={`p-1.5 rounded-full transition mr-2 ${
+                  isListening
+                    ? 'bg-red-500 text-white animate-pulse'
+                    : 'text-slate-400 hover:text-slate-600 dark:hover:text-white'
+                }`}
+                aria-label="Voice Search"
+              >
+                <Mic className="w-4.5 h-4.5" />
+              </button>
+            </Tooltip>
 
             <button
               type="button"

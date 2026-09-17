@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Star, ShoppingBag, Heart, Store, Eye, X, Check, ArrowRight } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
+import Tooltip from '../common/Tooltip';
 
 export default function ProductCard({ product, variant = 'default' }) {
   const { addToCart } = useCart();
@@ -171,25 +172,29 @@ export default function ProductCard({ product, variant = 'default' }) {
 
           {/* Floating Action Buttons (Wishlist + Quick View) */}
           <div className="absolute top-3 right-3 flex flex-col space-y-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
-            <button
-              onClick={() => toggleWishlist(product._id)}
-              aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
-              className={`p-2 rounded-full backdrop-blur-md transition-all shadow-sm ${
-                inWishlist
-                  ? 'bg-red-50 text-red-500 dark:bg-red-950/80'
-                  : 'bg-white/90 text-slate-600 hover:text-red-500 dark:bg-[#1E1E20]/90 dark:text-slate-300'
-              }`}
-            >
-              <Heart className={`w-3.5 h-3.5 ${inWishlist ? 'fill-red-500' : ''}`} />
-            </button>
+            <Tooltip content={inWishlist ? "Saved to Wishlist" : "Save to Wishlist"} position="left">
+              <button
+                onClick={() => toggleWishlist(product._id)}
+                aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
+                className={`p-2 rounded-full backdrop-blur-md transition-all shadow-sm ${
+                  inWishlist
+                    ? 'bg-red-50 text-red-500 dark:bg-red-950/80'
+                    : 'bg-white/90 text-slate-600 hover:text-red-500 dark:bg-[#1E1E20]/90 dark:text-slate-300'
+                }`}
+              >
+                <Heart className={`w-3.5 h-3.5 ${inWishlist ? 'fill-red-500' : ''}`} />
+              </button>
+            </Tooltip>
 
-            <button
-              onClick={() => setShowQuickView(true)}
-              aria-label="Quick View"
-              className="p-2 rounded-full backdrop-blur-md bg-white/90 text-[#1C1C1E] hover:text-[#C67C4E] dark:hover:text-[#C67C4E] dark:bg-[#1E1E20]/90 dark:text-slate-300 transition-all shadow-sm"
-            >
-              <Eye className="w-3.5 h-3.5" />
-            </button>
+            <Tooltip content="Quick View" position="left">
+              <button
+                onClick={() => setShowQuickView(true)}
+                aria-label="Quick View"
+                className="p-2 rounded-full backdrop-blur-md bg-white/90 text-[#1C1C1E] hover:text-[#C67C4E] dark:hover:text-[#C67C4E] dark:bg-[#1E1E20]/90 dark:text-slate-300 transition-all shadow-sm"
+              >
+                <Eye className="w-3.5 h-3.5" />
+              </button>
+            </Tooltip>
           </div>
         </div>
 
@@ -253,18 +258,20 @@ export default function ProductCard({ product, variant = 'default' }) {
               </div>
             </div>
 
-            <button
-              onClick={handleQuickAdd}
-              disabled={product.stock === 0}
-              className={`p-2.5 rounded-xl transition-all shadow-sm active:scale-95 disabled:opacity-40 disabled:pointer-events-none flex items-center space-x-1 ${
-                addedAnimation
-                  ? 'bg-[#C67C4E] text-white'
-                  : 'bg-[#F7F5F2] dark:bg-[#2B2B2F] text-[#1C1C1E] dark:text-[#F8F7F5] hover:bg-[#C67C4E] hover:text-white dark:hover:bg-[#C67C4E]'
-              }`}
-              title={product.stock === 0 ? 'Out of Stock' : 'Quick Add to Cart'}
-            >
-              {addedAnimation ? <Check className="w-4 h-4" /> : <ShoppingBag className="w-4 h-4" />}
-            </button>
+            <Tooltip content={product.stock === 0 ? 'Out of Stock' : 'Quick Add to Cart'} position="top">
+              <button
+                onClick={handleQuickAdd}
+                disabled={product.stock === 0}
+                className={`p-2.5 rounded-xl transition-all shadow-sm active:scale-95 disabled:opacity-40 disabled:pointer-events-none flex items-center space-x-1 ${
+                  addedAnimation
+                    ? 'bg-[#C67C4E] text-white'
+                    : 'bg-[#F7F5F2] dark:bg-[#2B2B2F] text-[#1C1C1E] dark:text-[#F8F7F5] hover:bg-[#C67C4E] hover:text-white dark:hover:bg-[#C67C4E]'
+                }`}
+                aria-label={product.stock === 0 ? 'Out of Stock' : 'Quick Add to Cart'}
+              >
+                {addedAnimation ? <Check className="w-4 h-4" /> : <ShoppingBag className="w-4 h-4" />}
+              </button>
+            </Tooltip>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { PlusCircle, Edit, Trash2, Package, Search } from 'lucide-react';
 import api from '../../services/api';
+import Tooltip from '../../components/common/Tooltip';
 
 export default function VendorProducts() {
   const [products, setProducts] = useState([]);
@@ -104,20 +105,24 @@ export default function VendorProducts() {
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right space-x-2">
-                    <Link
-                      to={`/vendor/products/edit/${product._id}`}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-[#C67C4E] hover:bg-[#F8ECE3] dark:hover:bg-[#2B2B2F] transition inline-block mr-1"
-                      title="Edit Product"
-                    >
-                      <Edit className="w-4 h-4" />
-                    </Link>
-                    <button
-                      onClick={() => handleDelete(product._id)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition"
-                      title="Delete Product"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                    <Tooltip content="Edit Product" position="top">
+                      <Link
+                        to={`/vendor/products/edit/${product._id}`}
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-[#C67C4E] hover:bg-[#F8ECE3] dark:hover:bg-[#2B2B2F] transition inline-block mr-1"
+                        aria-label="Edit Product"
+                      >
+                        <Edit className="w-4 h-4" />
+                      </Link>
+                    </Tooltip>
+                    <Tooltip content="Delete Product" position="top">
+                      <button
+                        onClick={() => handleDelete(product._id)}
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition"
+                        aria-label="Delete Product"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </Tooltip>
                   </td>
                 </tr>
               ))}

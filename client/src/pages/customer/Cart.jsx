@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Tooltip from '../../components/common/Tooltip';
 import {
   Trash2,
   Plus,
@@ -251,13 +252,15 @@ export default function Cart() {
                           </button>
                         </div>
 
-                        <button
-                          onClick={() => removeFromCart(item._id)}
-                          className="p-1.5 text-slate-400 hover:text-red-500 transition"
-                          title="Remove item"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                        <Tooltip content="Remove item" position="top">
+                          <button
+                            onClick={() => removeFromCart(item._id)}
+                            className="p-1.5 text-slate-400 hover:text-red-500 transition"
+                            aria-label="Remove item"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </Tooltip>
                       </div>
                     </div>
                   ))}

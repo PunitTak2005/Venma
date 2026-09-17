@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import vendorService from '../../services/vendorService';
+import Tooltip from '../../components/common/Tooltip';
 import ProductCard from '../../components/customer/ProductCard';
 import InitialsBadge from '../../components/common/InitialsBadge';
 
@@ -268,10 +269,12 @@ export default function VendorStore() {
                   className="ring-2 ring-white/20 shadow-lg bg-black/50 text-[#F8ECE3] border-white/30"
                 />
                 <h1 className="text-2xl sm:text-3xl font-black">{vendor.storeName}</h1>
-                <span className="bg-[#10B981] px-2 py-0.5 rounded-full text-white text-[10px] font-bold flex items-center shadow-sm" title="Verified Marketplace Seller">
-                  <ShieldCheck className="w-3.5 h-3.5 mr-1" />
-                  Verified Merchant
-                </span>
+                <Tooltip content="Verified Marketplace Seller" position="top">
+                  <span className="bg-[#10B981] px-2 py-0.5 rounded-full text-white text-[10px] font-bold flex items-center shadow-sm" aria-label="Verified Marketplace Seller">
+                    <ShieldCheck className="w-3.5 h-3.5 mr-1" />
+                    Verified Merchant
+                  </span>
+                </Tooltip>
               </div>
 
                 {/* Specialization Badge */}
@@ -320,14 +323,16 @@ export default function VendorStore() {
 
             {/* Action Buttons */}
             <div className="flex items-center space-x-2.5">
-              <button
-                onClick={handleShare}
-                className="min-h-[44px] h-[44px] px-4 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition text-xs font-bold flex items-center space-x-1.5"
-                title="Share Store Link"
-              >
-                <Share2 className="w-4 h-4" />
-                <span>{copiedLink ? 'Copied!' : 'Share'}</span>
-              </button>
+              <Tooltip content={copiedLink ? 'Copied Store Link!' : 'Share Store Link'} position="top">
+                <button
+                  onClick={handleShare}
+                  className="min-h-[44px] h-[44px] px-4 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition text-xs font-bold flex items-center space-x-1.5"
+                  aria-label="Share Store Link"
+                >
+                  <Share2 className="w-4 h-4" />
+                  <span>{copiedLink ? 'Copied!' : 'Share'}</span>
+                </button>
+              </Tooltip>
 
               <button
                 id="vendor-follow-button"

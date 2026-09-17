@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Tooltip from '../common/Tooltip';
 import {
   Star,
   CheckCircle,
@@ -59,26 +60,28 @@ export default function ProductInfoCard({
           </span>
         </div>
 
-        {/* Share Button with Animated Tooltip */}
+        {/* Share Button with Accessible High-Contrast Tooltip */}
         <div className="relative">
-          <button
-            type="button"
-            onClick={handleShare}
-            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-[#C87D55] dark:hover:text-[#C87D55] hover:border-[#C87D55]/50 transition-colors flex items-center gap-1.5 text-xs font-semibold"
-            title="Share this product"
-          >
-            {copied ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-emerald-500" />
-                <span className="text-emerald-600 dark:text-emerald-400">Copied!</span>
-              </>
-            ) : (
-              <>
-                <Share2 className="w-3.5 h-3.5" />
-                <span>Share</span>
-              </>
-            )}
-          </button>
+          <Tooltip content={copied ? 'Link Copied!' : 'Share this product'} position="left">
+            <button
+              type="button"
+              onClick={handleShare}
+              className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:text-[#C87D55] dark:hover:text-[#C87D55] hover:border-[#C87D55]/50 transition-colors flex items-center gap-1.5 text-xs font-semibold"
+              aria-label="Share this product"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-500" />
+                  <span className="text-emerald-600 dark:text-emerald-400">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span>Share</span>
+                </>
+              )}
+            </button>
+          </Tooltip>
         </div>
       </div>
 
@@ -221,18 +224,20 @@ export default function ProductInfoCard({
           </button>
 
           {/* Wishlist Button */}
-          <button
-            type="button"
-            onClick={onToggleWishlist}
-            className={`p-4 rounded-2xl border transition-all flex items-center justify-center ${
-              inWishlist
-                ? 'bg-red-50 text-red-500 border-red-200 dark:bg-red-950/40 dark:border-red-900 shadow-sm'
-                : 'bg-white dark:bg-[#1A1A1D] text-slate-600 dark:text-slate-300 border-[#DDD6CE] dark:border-[#3A3A40] hover:text-red-500 hover:border-red-200'
-            }`}
-            title={inWishlist ? 'Remove from Wishlist' : 'Save to Wishlist'}
-          >
-            <Heart className={`w-5 h-5 transition-transform active:scale-125 ${inWishlist ? 'fill-red-500 text-red-500' : ''}`} />
-          </button>
+          <Tooltip content={inWishlist ? 'Remove from Wishlist' : 'Save to Wishlist'} position="top">
+            <button
+              type="button"
+              onClick={onToggleWishlist}
+              className={`p-4 rounded-2xl border transition-all flex items-center justify-center ${
+                inWishlist
+                  ? 'bg-red-50 text-red-500 border-red-200 dark:bg-red-950/40 dark:border-red-900 shadow-sm'
+                  : 'bg-white dark:bg-[#1A1A1D] text-slate-600 dark:text-slate-300 border-[#DDD6CE] dark:border-[#3A3A40] hover:text-red-500 hover:border-red-200'
+              }`}
+              aria-label={inWishlist ? 'Remove from Wishlist' : 'Save to Wishlist'}
+            >
+              <Heart className={`w-5 h-5 transition-transform active:scale-125 ${inWishlist ? 'fill-red-500 text-red-500' : ''}`} />
+            </button>
+          </Tooltip>
         </div>
 
         {/* Buy Now: Dark Slate Button */}

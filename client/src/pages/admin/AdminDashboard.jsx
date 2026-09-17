@@ -1,5 +1,6 @@
 import Logo from "../../components/common/Logo";
 import InitialsBadge from "../../components/common/InitialsBadge";
+import { chartTooltipStyles } from "../../components/common/chartTooltipStyles";
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -301,14 +302,7 @@ export default function AdminDashboard() {
               />
               <Tooltip
                 formatter={(val) => [formatINRCompact(val), 'Amount']}
-                contentStyle={{
-                  backgroundColor: '#1C1C1E',
-                  borderRadius: '16px',
-                  border: 'none',
-                  color: '#fff',
-                  fontSize: '12px',
-                  boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
-                }}
+                {...chartTooltipStyles}
               />
               <Bar dataKey="revenue" fill="#1C1C1E" radius={[8, 8, 0, 0]} name="Gross GMV" />
               <Bar dataKey="commission" fill="#C67C4E" radius={[8, 8, 0, 0]} name="Platform Take-Rate (10%)" />

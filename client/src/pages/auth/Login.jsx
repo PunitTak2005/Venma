@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ShieldCheck, Store, User, Lock, Mail, ArrowRight, Copy, Check, KeyRound, Loader2 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import Logo from "../../components/common/Logo";
+import Tooltip from "../../components/common/Tooltip";
 
 export default function Login() {
   const { login } = useAuth();
@@ -205,14 +206,16 @@ export default function Login() {
               <code className="px-2 py-1 rounded-md bg-white dark:bg-[#121214] border border-[#DDD6CE] dark:border-[#3A3A40] text-[11px] font-mono font-bold text-slate-800 dark:text-slate-100 select-all">
                 password123
               </code>
-              <button
-                type="button"
-                onClick={handleCopyPassword}
-                title="Copy demo password"
-                className="p-1 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 transition"
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              </button>
+              <Tooltip content={copied ? "Password Copied!" : "Copy demo password"} position="top">
+                <button
+                  type="button"
+                  onClick={handleCopyPassword}
+                  aria-label="Copy demo password"
+                  className="p-1 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 transition"
+                >
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                </button>
+              </Tooltip>
             </div>
           </div>
         </div>

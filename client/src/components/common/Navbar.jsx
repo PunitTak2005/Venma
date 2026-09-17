@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import Tooltip from "./Tooltip";
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
@@ -152,39 +153,42 @@ export default function Navbar() {
             <NotificationBell />
 
             {/* Dark Mode Toggle */}
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-              aria-label="Toggle theme mode"
-              title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
-            </button>
+            <Tooltip content={darkMode ? "Switch to light mode" : "Switch to dark mode"} position="bottom">
+              <button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                aria-label="Toggle theme mode"
+              >
+                {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5" />}
+              </button>
+            </Tooltip>
 
             {/* Wishlist */}
-            <Link
-              to="/wishlist"
-              className="relative p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition hidden sm:flex"
-              aria-label="Wishlist"
-              title="My Wishlist"
-            >
-              <Heart className="w-5 h-5" />
-            </Link>
+            <Tooltip content="My Wishlist" position="bottom" wrapperClassName="hidden sm:inline-flex">
+              <Link
+                to="/wishlist"
+                className="relative p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                aria-label="Wishlist"
+              >
+                <Heart className="w-5 h-5" />
+              </Link>
+            </Tooltip>
 
             {/* Shopping Cart with Badge */}
-            <Link
-              to="/cart"
-              className="p-2 text-slate-600 dark:text-slate-300 hover:text-[#C67C4E] dark:hover:text-[#C67C4E] hover:bg-white dark:hover:bg-[#1E1E20] rounded-xl transition relative"
-              title="Cart"
-              aria-label="View shopping cart"
-            >
-              <ShoppingCart className="w-5 h-5" />
-              {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#C67C4E] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm animate-pulse">
-                  {itemCount}
-                </span>
-              )}
-            </Link>
+            <Tooltip content="Shopping Cart" position="bottom">
+              <Link
+                to="/cart"
+                className="p-2 text-slate-600 dark:text-slate-300 hover:text-[#C67C4E] dark:hover:text-[#C67C4E] hover:bg-slate-100 dark:hover:bg-[#1E1E20] rounded-xl transition relative"
+                aria-label="View shopping cart"
+              >
+                <ShoppingCart className="w-5 h-5" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-[#C67C4E] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm animate-pulse">
+                    {itemCount}
+                  </span>
+                )}
+              </Link>
+            </Tooltip>
 
             {/* Authentication / Role-based Dropdown */}
             {user ? (

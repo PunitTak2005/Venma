@@ -1,5 +1,6 @@
 import Logo from "../../components/common/Logo";
 import InitialsBadge from "../../components/common/InitialsBadge";
+import { chartTooltipStyles } from "../../components/common/chartTooltipStyles";
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -206,13 +207,7 @@ export default function VendorDashboard() {
               <XAxis dataKey="month" stroke="#94a3b8" fontSize={11} />
               <YAxis stroke="#94a3b8" fontSize={11} />
               <Tooltip
-                contentStyle={{
-                  backgroundColor: '#1C1C1E',
-                  borderRadius: '12px',
-                  border: 'none',
-                  color: '#fff',
-                  fontSize: '12px',
-                }}
+                {...chartTooltipStyles}
               />
               <Bar dataKey="revenue" fill="#C67C4E" radius={[6, 6, 0, 0]} name="Revenue (₹)" />
             </BarChart>
