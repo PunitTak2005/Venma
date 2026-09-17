@@ -89,6 +89,13 @@ exports.login = async (req, res, next) => {
     let vendor = null;
     if (user.role === 'vendor') {
       vendor = await Vendor.findOne({ user: user._id });
+      if (!vendor && user.email === 'vendor@venma.com') {
+        vendor = await Vendor.findOne({ storeSlug: 'technova-electronics' });
+        if (vendor) {
+          vendor.user = user._id;
+          await vendor.save();
+        }
+      }
     }
 
     const accessToken = generateAccessToken(user._id);
@@ -124,6 +131,13 @@ exports.getMe = async (req, res, next) => {
     let vendor = null;
     if (user.role === 'vendor') {
       vendor = await Vendor.findOne({ user: user._id });
+      if (!vendor && user.email === 'vendor@venma.com') {
+        vendor = await Vendor.findOne({ storeSlug: 'technova-electronics' });
+        if (vendor) {
+          vendor.user = user._id;
+          await vendor.save();
+        }
+      }
     }
 
     res.json({

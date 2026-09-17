@@ -56,7 +56,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Handle preflight OPTIONS requests for every route before any other middleware
-app.options('*', cors(corsOptions));
+app.options(/(.*)/, cors(corsOptions));
 
 // ── Body parsers ──────────────────────────────────────────────────────────────
 app.use(express.json());
@@ -125,6 +125,7 @@ app.use('/api/auth',          require('./routes/authRoutes'));
 app.use('/api/products',      require('./routes/productRoutes'));
 app.use('/api/orders',        require('./routes/orderRoutes'));
 app.use('/api/vendors',       require('./routes/vendorRoutes'));
+app.use('/api/vendor',        require('./routes/vendorRoutes'));
 app.use('/api/categories',    require('./routes/categoryRoutes'));
 app.use('/api/reviews',       require('./routes/reviewRoutes'));
 app.use('/api/coupons',       require('./routes/couponRoutes'));
@@ -137,13 +138,18 @@ app.use(errorHandler);
 
 // ── Start server ──────────────────────────────────────────────────────────────
 const PORT = process.env.PORT || 9006;
-app.listen(PORT, () => {
-  const env = process.env.NODE_ENV || 'development';
-  console.log('');
-  console.log('  ✓ VENMA API started');
-  console.log(`    Environment : ${env}`);
-  console.log(`    Port        : ${PORT}`);
-  console.log(`    Client URL  : ${process.env.CLIENT_URL || 'http://localhost:3257'}`);
-  console.log(`    CORS origins: ${allowedOrigins.join(', ')}`);
-  console.log('');
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    const env = process.env.NODE_ENV || 'development';
+    console.log('');
+    console.log('  ✓ VENMA API started');
+    console.log(`    Environment : ${env}`);
+    console.log(`    Port        : ${PORT}`);
+    console.log(`    Client URL  : ${process.env.CLIENT_URL || 'http://localhost:3257'}`);
+    console.log(`    CORS origins: ${allowedOrigins.join(', ')}`);
+    console.log('');
+  });
+}
+
+module.exports = app;
+

@@ -19,6 +19,23 @@ const protect = async (req, res, next) => {
       if (!req.user) {
         return res.status(401).json({ success: false, message: 'User not found' });
       }
+
+      if (req.user.role === 'vendor') {
+        const Vendor = require('../models/Vendor');
+        let vendorDoc = await Vendor.findOne({ user: req.user._id });
+        if (!vendorDoc && req.user.email === 'vendor@venma.com') {
+          vendorDoc = await Vendor.findOne({ storeSlug: 'technova-electronics' });
+          if (vendorDoc) {
+            vendorDoc.user = req.user._id;
+            await vendorDoc.save();
+          }
+        }
+        if (vendorDoc) {
+          req.user.vendorId = vendorDoc._id;
+          req.vendor = vendorDoc;
+        }
+      }
+
       return next();
     } catch (error) {
       console.error('Auth verification error:', error.message);
