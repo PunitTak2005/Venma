@@ -86,7 +86,7 @@ export default function VendorProducts() {
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
               {filtered.map((product) => (
-                <tr key={product._id} className="hover:bg-slate-50 dark:hover:bg-slate-750 transition">
+                <tr key={product._id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/80 transition-colors duration-200">
                   <td className="px-6 py-4">
                     <div className="flex items-center space-x-3">
                       <img src={product.images[0]} alt={product.name} className="w-10 h-10 rounded-xl object-cover" />

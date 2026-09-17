@@ -842,7 +842,7 @@ export default function Checkout() {
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 text-slate-600 dark:text-slate-300 text-xs font-bold flex items-center space-x-2 transition"
+                  className="px-5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold flex items-center space-x-2 transition"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   <span>Back to Customer Info</span>

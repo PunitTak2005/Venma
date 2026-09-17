@@ -129,7 +129,7 @@ export default function Orders() {
               {/* Items in Order with Individual Vendor Tracking */}
               <div className="space-y-3">
                 {order.items.map((item, idx) => (
-                  <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-center justify-between py-2 border-b border-slate-50 dark:border-slate-750 gap-2 text-xs">
+                  <div key={idx} className="flex flex-col sm:flex-row items-start sm:items-center justify-between py-2 border-b border-slate-100 dark:border-slate-800 gap-2 text-xs">
                     <div className="flex items-center space-x-3">
                       <img src={item.image} alt={item.name} className="w-12 h-12 rounded-xl object-cover bg-slate-100" />
                       <div>

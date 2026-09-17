@@ -45,7 +45,7 @@ export default function AdminCustomers() {
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
               {users.map((u) => (
-                <tr key={u._id} className="hover:bg-slate-50 dark:hover:bg-slate-750 transition">
+                <tr key={u._id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/80 transition-colors duration-200">
                   <td className="px-6 py-3.5">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-300">
